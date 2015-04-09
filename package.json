@@ -2,19 +2,21 @@
   "name": "npm-nodedom",
   "version": "1.0.0",
   "description": "Repo that shows loading issue with script tasks in npm in combination with nodedom.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
 	  
-   	"build-css": "stylus -u nib -p source/styles/main.styl > source/build/main.css",
-    "build-css-min": "stylus -u nib -c -p source/styles/main.styl > source/build/main.min.css",
+   	"build-css": "stylus -p source/styles/main.styl > source/build/main.css",
+    "build-css-min": "stylus -c -p source/styles/main.styl > source/build/main.min.css",
     "build-js": "browserify source/scripts/app.js -o source/build/app.js",
     "build-js-min": "browserify source/scripts/app.js | uglifyjs -o source/build/app.min.js",
     
-	"watch-css": "nodemon -w public/styles -x npm run build-css",
-    "watch-js": "nodemon -w public/scripts -x npm run build-js", 
+	"watch-css": "start /b nodemon -w public/styles -x npm run build-css",
+    "watch-js": "start /b nodemon -w public/scripts -x npm run build-js", 
 	"watch-server": "nodemon --ignore public server.js",	 
-	"watch": "npm run watch-js & npm run watch-css",  
+	"watch": "npm run watch-js & npm run watch-css & npm run watch-server",  
+	  
     "build": "npm run build-js & npm run build-css"
+	  
   },
   "repository": {
     "type": "git",
